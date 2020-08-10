@@ -76,7 +76,7 @@ function mostrar() {
 		lugarMasElegido = "Bariloche";
 	} else if (contCataratas > contBariloche && contCataratas > contSalta) {
 		lugarMasElegido = "Cataratas";
-	} else {
+	} else if (contSalta > contBariloche && contSalta > contCataratas) {
 		lugarMasElegido = "Salta";
 	}
 
