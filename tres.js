@@ -9,7 +9,81 @@ a)el lugar más elegido
 b)el sexo de titular que lleva más pasajeros.
 c)el promedio de personas por viaje,  que viajan en invierno
 */
-function mostrar()
-{
-	alert("tres");
+function mostrar() {
+	let sexoTitular;
+	let lugar;
+	let temporada;
+	let cantPersonas;
+	let respuesta = 's';
+	let contBariloche = 0;
+	let contCataratas = 0;
+	let contSalta = 0;
+	let cantPasajeros;
+	let flagPasajeros = 0;
+	let sexoTitMasPasasjeros;
+
+
+	do {
+		do {
+			sexoTitular = prompt("Ingrese nombre del titular. 'f' o 'm'").toLocaleLowerCase();
+		} while (sexoTitular != 'f' || sexoTitular != 'm');
+		do {
+			lugar = prompt("Ingrese lugar (Bariloche o Cataratas o Salta)").toLocaleLowerCase();
+		} while (lugar != "bariloche" && lugar != "cataratas" && lugar != "salta");
+		do {
+			temporada = prompt("Ingrese temporada (Invierno/Verano/Otoño/Primavera)").toLocaleLowerCase();
+		} while (temporada != "otoño" && temporada != "invierno" && temporada != "verano" && temporada != "primavera");
+		do {
+			cantPersonas = parseInt(prompt("Ingrese cantidad de personas que viajan"));
+		} while (cantPersonas <= 0 || isNaN(cantPersonas));
+
+		switch (lugar) {
+			case "bariloche":
+				contBariloche++;
+				break;
+			case "cataratas":
+				contCataratas++;
+				break;
+			case "salta":
+				contSalta++;
+				break;
+		}
+
+		if (cantPersonas > cantPasajeros || flagPasajeros == 0) {
+			sexoTitMasPasasjeros = sexoTitular;
+			flagPasajeros = 1;
+		}
+
+		if (sexoTitMasPasasjeros == 'f') {
+			sexoTitMasPasasjeros = "Femenino";
+		} else {
+			sexoTitMasPasasjeros = "Masculino";
+		}
+
+		if (temporada == "invierno") {
+			contInvierno++;
+			persPorViaje += cantPersonas;
+		}
+
+
+		respuesta = prompt("Desea ingresar otro producto? s/n");
+	} while (respuesta == 's');
+
+	if (contBariloche > contCataratas && contBariloche > contSalta) {
+		lugarMasElegido = "Bariloche";
+	} else if (contCataratas > contBariloche && contCataratas > contSalta) {
+		lugarMasElegido = "Cataratas";
+	} else {
+		lugarMasElegido = "Salta";
+	}
+
+	promPorViaje = persPorViaje / contInvierno;
+
+	document.write("A)El lugar mas elegido es: " + lugarMasElegido + "<br>");
+	document.write("B)El sexo del tidular con mas pasajeros es: " + sexoTitMasPasajeros + "<br>");
+	if (contInvierno == 0) {
+		document.write("C)No hay viajes hechos en invierno " + "<br>");
+	} else {
+		document.write("C)El promedio de personas que viajan en invierno es: " + promPorViaje + "<br>");
+	}
 }

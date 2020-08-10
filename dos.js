@@ -33,12 +33,11 @@ function mostrar() {
       precio = parseFloat(prompt("Ingrese precio de producto"));
     } while (precio <= 0 || isNaN(precio));
     do {
-      pesoKilogramo = parseFloat(prompt("Ingrese peso por Kilogramo de producto"));
+      pesoKilogramo = parseFloat(prompt("Ingrese peso en Kilogramos de producto"));
     } while (pesoKilogramo <= 0 || isNaN(pesoKilogramo));
     do {
       tipo = prompt("Ingrese tipo de producto. (solido o liquido)");
     } while (tipo != "solido" && tipo != "liquido");
-    respuesta = prompt("Desea ingresar otro producto? s/n");
 
     switch (tipo) {
       case "solido":
@@ -60,9 +59,10 @@ function mostrar() {
     }
     pesoTotal = acumPrecioSolido + acumPesoLiquido;
 
+    respuesta = prompt("Desea ingresar otro producto? s/n");
   } while (respuesta == 's');
 
-  document.write("A)El peso total de la compra es: " + pesoTotal + "<br>");
+  document.write("A)El peso total de la compra es: " + pesoTotal + "Kg" + "<br>");
   if (marcaLiquido == null) {
     document.write("B)No se ingreso ningun producto liquido " + "<br>");
   } else {
