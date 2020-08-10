@@ -18,20 +18,24 @@ function mostrar() {
 	let contBariloche = 0;
 	let contCataratas = 0;
 	let contSalta = 0;
+	let lugarMasElegido;
 	let cantPasajeros;
 	let flagPasajeros = 0;
-	let sexoTitMasPasasjeros;
+	let sexoTitMasPasajeros;
+	let contInvierno = 0;
+	let persPorViaje = 0;
+	let promPorViaje;
 
 
 	do {
 		do {
-			sexoTitular = prompt("Ingrese nombre del titular. 'f' o 'm'").toLocaleLowerCase();
-		} while (sexoTitular != 'f' || sexoTitular != 'm');
+			sexoTitular = prompt("Ingrese sexo del titular. 'f' (femenino) o 'm' (masculino)").toLowerCase();
+		} while (sexoTitular != 'f' && sexoTitular != 'm');
 		do {
-			lugar = prompt("Ingrese lugar (Bariloche o Cataratas o Salta)").toLocaleLowerCase();
+			lugar = prompt("Ingrese lugar (Bariloche o Cataratas o Salta)").toLowerCase();
 		} while (lugar != "bariloche" && lugar != "cataratas" && lugar != "salta");
 		do {
-			temporada = prompt("Ingrese temporada (Invierno/Verano/Otoño/Primavera)").toLocaleLowerCase();
+			temporada = prompt("Ingrese temporada (Invierno/Verano/Otoño/Primavera)").toLowerCase();
 		} while (temporada != "otoño" && temporada != "invierno" && temporada != "verano" && temporada != "primavera");
 		do {
 			cantPersonas = parseInt(prompt("Ingrese cantidad de personas que viajan"));
@@ -50,15 +54,14 @@ function mostrar() {
 		}
 
 		if (cantPersonas > cantPasajeros || flagPasajeros == 0) {
-			sexoTitMasPasasjeros = sexoTitular;
+			if (sexoTitular == 'f') {
+				sexoTitMasPasajeros = "Femenino";
+			} else {
+				sexoTitMasPasajeros = "Masculino";
+			}
 			flagPasajeros = 1;
 		}
 
-		if (sexoTitMasPasasjeros == 'f') {
-			sexoTitMasPasasjeros = "Femenino";
-		} else {
-			sexoTitMasPasasjeros = "Masculino";
-		}
 
 		if (temporada == "invierno") {
 			contInvierno++;
