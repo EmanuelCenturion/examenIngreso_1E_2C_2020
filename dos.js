@@ -71,7 +71,7 @@ function mostrar() {
   if (marcaSolido == null) {
     document.write("B)No se ingreso ningun producto solido " + "<br>");
   } else {
-    document.write("C)La marca del solido mas liviano es: " + marcaSolido + "<br>");
+    document.write("C)La marca del solido mas barato es: " + marcaSolido + "<br>");
   }
 
 }
